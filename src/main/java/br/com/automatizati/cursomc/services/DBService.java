@@ -5,10 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.stereotype.Service;
 
-import br.com.automatizati.cursomc.CursomcApplication;
 import br.com.automatizati.cursomc.domain.Categoria;
 import br.com.automatizati.cursomc.domain.Cidade;
 import br.com.automatizati.cursomc.domain.Cliente;
