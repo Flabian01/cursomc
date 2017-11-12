@@ -20,6 +20,7 @@ import br.com.automatizati.cursomc.domain.PagamentoComCartao;
 import br.com.automatizati.cursomc.domain.Pedido;
 import br.com.automatizati.cursomc.domain.Produto;
 import br.com.automatizati.cursomc.domain.enums.EstadoPagamento;
+import br.com.automatizati.cursomc.domain.enums.Perfil;
 import br.com.automatizati.cursomc.domain.enums.TipoCliente;
 import br.com.automatizati.cursomc.repositories.CategoriaRepository;
 import br.com.automatizati.cursomc.repositories.CidadeRepository;
@@ -121,17 +122,22 @@ public class DBService {
 		estadoRepository.save(Arrays.asList(est1, est2));
 		cidadeRepository.save(Arrays.asList(c1, c2, c3));
 
-		Cliente cli1 = new Cliente(null, "Maria Silva", "nikolassoares84@gmail.com", "28725673899", TipoCliente.PESSOAFISICA, pe.encode("123"));
-
+		Cliente cli1 = new Cliente(null, "Maria Silva", "flabian.martinez@gmail.com", "28725673899", TipoCliente.PESSOAFISICA, pe.encode("123"));
 		cli1.getTelefones().addAll(Arrays.asList("3256542", "998564525"));
+		
+		Cliente cli2 = new Cliente(null, "Ana Costa", "flabian.martinez@gmail.com", "76643303192", TipoCliente.PESSOAFISICA, pe.encode("123"));
+		cli1.getTelefones().addAll(Arrays.asList("32321221", "998564323"));
+		cli2.addPerfil(Perfil.ADMIN);
 
-		Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "3213948", cli1, c1);
-		Endereco e2 = new Endereco(null, "Avenida Matos", "3105", "Sala 800", "Centro", "erer948", cli1, c2);
+		Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "32139484", cli1, c1);
+		Endereco e2 = new Endereco(null, "Avenida Matos", "3105", "Sala 800", "Centro", "12345674", cli1, c2);
+		Endereco e3 = new Endereco(null, "Avenida Floriano", "2106", "null", "Centro", "96543454", cli2, c2);
 
 		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
+		cli2.getEnderecos().addAll(Arrays.asList(e3));
 
-		clienteRepository.save(Arrays.asList(cli1));
-		enderecoRepository.save(Arrays.asList(e1, e2));
+		clienteRepository.save(Arrays.asList(cli1, cli2));
+		enderecoRepository.save(Arrays.asList(e1, e2, e3));
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy hh:mm");
 		
